@@ -1,0 +1,17 @@
+
+./izap.c: ../izap.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd ".."; MODLUNIT=$(NRNUNITS) $(NOCMODL) izap.mod -o "/mnt/hpx/home/schneiderm/Projects/12_Neuron/hoc_functions/x86_64")
+
+./izap.o: ./izap.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./SinClamp.c: ../SinClamp.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd ".."; MODLUNIT=$(NRNUNITS) $(NOCMODL) SinClamp.mod -o "/mnt/hpx/home/schneiderm/Projects/12_Neuron/hoc_functions/x86_64")
+
+./SinClamp.o: ./SinClamp.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
